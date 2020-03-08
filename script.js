@@ -16,7 +16,7 @@ console.log(setTime());
 
 // calendar
 function createCalendar() {
-  newRow = $("<try>").append(".container");
+  newRow = $("<tr>").append(".container");
   newBox = $("<input>").append("<tr>");
 }
 createCalendar();
