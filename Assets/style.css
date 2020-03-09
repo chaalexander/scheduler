@@ -63,6 +63,9 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+/* .fas {
+  color: #ff6961;
+} */
 
 .calendar {
   margin-bottom: 30px;
