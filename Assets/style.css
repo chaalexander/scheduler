@@ -55,11 +55,8 @@ textarea {
 }
 
 .saveBtn {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #06aed5;
-  color: white;
+  width: 5%;
+  height: 70px;
 }
 
 .saveBtn i:hover {
@@ -68,10 +65,16 @@ textarea {
 }
 
 .calendar {
+  margin-bottom: 30px;
 }
 
 .guest {
   width: 80%;
-  height: 50px;
+  height: 70px;
   margin-left: 10%;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
 }

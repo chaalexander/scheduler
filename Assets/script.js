@@ -30,9 +30,8 @@ function createCalendar() {
     console.log(guestInput);
     $(newForm).append(guestInput);
 
-    var btn = $("<button class= saveBtn>").text("save");
+    var btn = $("<button class= saveBtn><i class= 'fa fa-save'></i>");
     console.log(btn);
-    $(btn).attr("data-index", i);
     $(guestInput).after(btn);
   }
 }
