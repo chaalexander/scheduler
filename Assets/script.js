@@ -41,7 +41,7 @@ function createCalendar() {
       <div class="input-group-append">
         <span class="input-group-text"><button class= saveBtn><i class= 'fas fa-save'></i></span>
       </div>
-    </div>`);
+      </div>`);
     $("#container").append(guestInput);
   }
 
