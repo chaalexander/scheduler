@@ -13,7 +13,7 @@ var newForm = $("<form>");
 console.log(newForm);
 $(newDiv).append(newForm);
 
-var savedArray = JSON.parse(localStorage.getItem("calendar")) || [];
+var savedArray = JSON.stringify(localStorage.getItem("calendar")) || [];
 
 // creating functions
 // time
@@ -42,15 +42,19 @@ function createCalendar() {
         <span class="input-group-text"><button class= saveBtn><i class= 'fas fa-save'></i></span>
       </div>
       </div>`);
-    $("#container").append(guestInput);
+    $(newForm).append(guestInput);
   }
 
   $(".saveBtn").on("click", function() {
     console.log("you click me ");
     event.preventDefault();
+    // $(".form-control").text(" ");
+    // var info = $("<p class= info></p>");
+    // $(".form-control").append(info);
+
     localStorage.setItem("calendar", JSON.stringify(savedArray));
-    localStorage.getItem("calendar");
-    $(".guest").text(savedArray);
+    JSON.parse(localStorage.getItem("calendar"));
+    $(".form-control").text(savedArray);
   });
 }
 
