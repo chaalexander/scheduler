@@ -43,28 +43,16 @@ function createCalendar() {
       </div>
     </div>`);
     $("#container").append(guestInput);
-
-    // var guestInput = $(
-    //   "<input type= 'text' placeholder= 'What is up!' class= guest>"
-    // );
-    // console.log(guestInput);
-    // $(newForm).append(guestInput);
-
-    // var btn = $("<button class= saveBtn><i class= 'fas fa-save'></i>");
-    // console.log(btn);
-    // $(guestInput).after(btn);
   }
 
-  // $(".saveBtn").on("click", function() {
-  //   console.log("you click me ");
-  //   event.preventDefault();
-  //   localStorage.setItem("calendar", JSON.stringify(savedArray));
-  //   localStorage.getItem("calendar");
-  //   $(".guest").text(savedArray);
-  // });
+  $(".saveBtn").on("click", function() {
+    console.log("you click me ");
+    event.preventDefault();
+    localStorage.setItem("calendar", JSON.stringify(savedArray));
+    localStorage.getItem("calendar");
+    $(".guest").text(savedArray);
+  });
 }
-
-// $("#container").html(createCalendar);
 
 $(document).ready(function() {
   setTime();
