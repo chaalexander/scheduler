@@ -40,21 +40,21 @@ textarea {
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: #d3d3d3 !important;
   color: white;
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: #ff6961 !important;
   color: white;
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: #77dd77 !;
   color: white;
 }
 
-.saveBtn {
+/* .saveBtn {
   width: 5%;
   height: 70px;
 }
@@ -62,12 +62,12 @@ textarea {
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
-}
+} */
 /* .fas {
   color: #ff6961;
 } */
 
-.calendar {
+/* .calendar {
   margin-bottom: 30px;
 }
 
@@ -80,4 +80,4 @@ textarea {
 footer {
   text-align: center;
   margin-top: 30px;
-}
+} */
