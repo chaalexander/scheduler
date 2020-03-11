@@ -1,5 +1,5 @@
 // variables
-var hours = ["09", "10", "11", "12", "13", "14", "15", "16", "17"];
+var hours = [09, 10, 11, 12, 13, 14, 15, 16, 17];
 console.log(hours);
 
 var showtime = $("#currentDay").text(setTime);
@@ -13,7 +13,7 @@ var newForm = $("<form>");
 console.log(newForm);
 $(newDiv).append(newForm);
 
-var savedArray = JSON.parse(localStorage.getItem("calendar")) || [];
+var savedInput = JSON.stringify(localStorage.getItem("calendar")) || " ";
 
 // creating functions
 // time
@@ -45,16 +45,19 @@ function createCalendar() {
     $(newForm).append(guestInput);
   }
 
-  $(".saveBtn").on("click", function() {
+  $(".saveBtn").on("click", function(event) {
     console.log("you click me ");
     event.preventDefault();
-    // $(".form-control").text(" ");
-    // var info = $("<p class= info></p>");
-    // $(".form-control").append(info);
 
-    localStorage.setItem("calendar", JSON.stringify(savedArray.length));
-    JSON.parse(localStorage.getItem("calendar"));
-    $(".form-control").text(savedArray.length);
+    localStorage.setItem("calendar", JSON.stringify(savedInput.length));
+
+    for (var i = 0; i < savedInput.length; i++) {
+      $(".form-control").text(" ");
+      var info = $("<p class= include ></p>");
+      $(".form-control").append(info);
+      JSON.parse(localStorage.getItem("calendar"));
+      $(info).text(savedInput.length);
+    }
   });
 }
 
