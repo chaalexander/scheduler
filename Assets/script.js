@@ -8,7 +8,8 @@ console.log(showtime);
 var newForm = $("<form>");
 console.log(newForm);
 $("#container").append(newForm);
-// var savedInput = JSON.stringify(localStorage.getItem("calendar")) || " ";
+
+var savedInput = [];
 
 // creating functions
 // time
@@ -32,7 +33,7 @@ function createCalendar() {
     var guestInput = $(`<div class="input-group mb-3 ${colorTime}"><div class="input-group-prepend">
     <span class="input-group-text">${hours[i]}:00</span>
       </div>
-      <input type="text" class="form-control   ${colorTime}">
+      <input type="text" class="form-control ${colorTime}" id= "input">
       <div class="input-group-append">
         <span class="input-group-text"><button class= saveBtn><i class= 'fas fa-save'></i></span>
       </div>
@@ -40,37 +41,41 @@ function createCalendar() {
     $(newForm).append(guestInput);
   }
 
+  function renderCalendar() {
+    $("#input").text("");
+
+    $("#input").attr("data-index", i);
+    $("#input").append(".saveBtn");
+  }
+
+  function init() {
+    var storedCalendar = JSON.parse(localStorage.getItem("calendar"));
+    if (storedCalendar !== null) {
+      savedInput = storedCalendar;
+    }
+
+    renderCalendar();
+    init();
+  }
+
+  function storedCalendar() {
+    localStorage.setItem("calendar", JSON.stringify(savedInput));
+  }
+
   $(".saveBtn").on("click", function(event) {
     event.preventDefault();
     console.log("you click me ");
 
-    // is returning function stringify() { [native code] }
+    var calendarText = $("#input").val();
 
-    // $(".form-control").html(JSON.parse(localStorage.getItem("calendar")));
-    // var item = $(".form-control").val;
-    // if (item) {
-    //   localStorage.setItem(
-    //     "calendar",
-    //     JSON.stringify,
-    //     $(".form-control").html()
-    //   );
-    //   $(".form-control").val("");
-    // }
+    if (calendarText === "") {
+      return;
+    }
+    savedInput.push(calendarText);
 
-    // returning null
-    // var savedInput = [];
-    // localStorage.setItem("calendar", JSON.stringify(savedInput.length));
-    // var data = JSON.parse(localStorage.getItem("calendar"));
-    // savedInput.push(guestInput.value);
-    // localStorage.setItem("calendar", JSON.stringify(savedInput));
-
-    // for (var i = 0; i < savedInput; i++) {
-    //   $(".form-control").text(" ");
-    //   var info = $("<p class= include ></p>");
-    //   $(".form-control").append(info);
-    //   JSON.parse(localStorage.getItem("calendar"));
-    //   $(".form-control").text(savedInput).val;
-    // }
+    $("#input").val(" ");
+    renderCalendar();
+    storedCalendar();
   });
 }
 
