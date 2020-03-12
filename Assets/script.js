@@ -44,8 +44,18 @@ function createCalendar() {
   function renderCalendar() {
     $("#input").text("");
 
-    $("#input").attr("data-index", i);
-    $("#input").append(".saveBtn");
+    for (var i = 0; i < savedInput.length; i++) {
+      var todo = savedInput[i];
+      // var p = $("<p id='p'></p>");
+
+      $("#input").text(todo);
+      $("#input").attr("data-index", i);
+
+      $("#input").append(".saveBtn");
+    }
+
+    // $("#input").attr("data-index", i);
+    // $("#input").append(".saveBtn");
   }
 
   function init() {
@@ -55,7 +65,6 @@ function createCalendar() {
     }
 
     renderCalendar();
-    init();
   }
 
   function storedCalendar() {
@@ -68,15 +77,16 @@ function createCalendar() {
 
     var calendarText = $("#input").val();
 
-    if (calendarText === "") {
-      return;
-    }
+    // if (calendarText === "") {
+    //   return;
+    // }
     savedInput.push(calendarText);
 
-    $("#input").val(" ");
+    // $("#input").val(" ");
     renderCalendar();
     storedCalendar();
   });
+  init();
 }
 
 $(document).ready(function() {
