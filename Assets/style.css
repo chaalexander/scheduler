@@ -2,6 +2,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1;
+  background-color: lightpink;
 }
 
 textarea {
@@ -18,20 +19,20 @@ textarea {
   background-color: transparent;
 }
 
-.description {
+/* .description {
   white-space: pre-wrap;
-}
+} */
 
 .time-block {
   text-align: center;
   border-radius: 15px;
 }
 
-.row {
+/* .row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
-}
+} */
 
 .hour {
   background-color: #ffffff;
@@ -41,43 +42,32 @@ textarea {
 
 .past {
   background-color: #d3d3d3 !important;
-  color: white;
+  color: darkgray;
+  font-family: "Sacramento", cursive;
 }
 
 .present {
   background-color: #ff6961 !important;
-  color: white;
+  color: darkred;
+  font-family: "Sacramento", cursive;
 }
 
 .future {
   background-color: #77dd77 !important;
-  color: white;
-}
-
-/* .saveBtn {
-  width: 5%;
-  height: 70px;
-}
-
-.saveBtn i:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
-}
-.fas {
-  color: #ff6961;
+  color: darkgreen;
+  font-family: "Sacramento", cursive;
 }
 
 .calendar {
-  margin-bottom: 30px;
-} */
-
-/* .guest {
-  width: 80%;
-  height: 70px;
-  margin-left: 10%;
-} */
+  width: 60%;
+  margin-left: 22%;
+}
 
 footer {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 100px;
+}
+
+.form-control {
+  font-size: 30px;
 }
