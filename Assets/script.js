@@ -9,8 +9,7 @@ var newForm = $("<form>");
 console.log(newForm);
 $("#container").append(newForm);
 
-// var savedInput = [];
-var storedCalendar = JSON.parse(localStorage.getItem("calendar")) || {};
+var savedInput = [];
 
 // creating functions
 // time
@@ -36,7 +35,7 @@ function createCalendar() {
       </div>
       <input type="text" class="form-control ${colorTime}" id= "input">
       <div class="input-group-append">
-        <span class="input-group-text"><button class= saveBtn data-time= "input"><i class= 'fas fa-save'></i></span>
+        <span class="input-group-text"><button class= saveBtn><i class= 'fas fa-save'></i></span>
       </div>
       </div>`);
     $(newForm).append(guestInput);
@@ -45,20 +44,22 @@ function createCalendar() {
   function renderCalendar() {
     $("#input").text("");
 
-    // for (var i = 0; i < savedInput.length; i++) {
-    var todo = savedInput[i];
-    // var p = $("<p id='p'></p>");
+    for (var i = 0; i < savedInput.length; i++) {
+      var todo = savedInput[i];
+      // var p = $("<p id='p'></p>");
 
-    $("#input").text(todo);
-    $("#input").attr("data-index", i);
+      $("#input").text(todo);
+      $("#input").attr("data-index", i);
 
-    $("#input").append(".saveBtn");
+      $("#input").append(".saveBtn");
+    }
 
     // $("#input").attr("data-index", i);
     // $("#input").append(".saveBtn");
   }
 
   function init() {
+    var storedCalendar = JSON.parse(localStorage.getItem("calendar"));
     if (storedCalendar !== null) {
       savedInput = storedCalendar;
     }
@@ -74,14 +75,12 @@ function createCalendar() {
     event.preventDefault();
     console.log("you click me ");
 
-    var atribute = $(this).attr("data-time");
-    var calendarText = $(`#${atribute}`).val();
-    storedCalendar[atribute] = calendarText;
+    var calendarText = $("#input").val();
 
     // if (calendarText === "") {
     //   return;
     // }
-    $(savedInput).push(calendarText);
+    savedInput.push(calendarText);
 
     // $("#input").val(" ");
     renderCalendar();
