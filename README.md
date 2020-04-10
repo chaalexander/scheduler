@@ -19,9 +19,9 @@
 <p>Bootstrap, HTML, CSS, Jquery</p>  
 <h2 id="screen"> ScreenShoots </h2>
 <h4>Desktop view</h4>
-<img src= "assets/image/desktop.png">
+<img src= "assets/image/des.png">
 <h4>Mobile view</h4>
-<img width="200" height="300" src= "assets/image/mobile.png">
+<img width="200" height="300" src= "assets/image/ml.png">
 <h2 id="contributors"> Contributors </h2>
 <p><a href= "https://github.com/chaalexander">@chaalexander</a></p> 
 <h2 id="contact"> Contact </h2>         
