@@ -1,27 +1,22 @@
 // variables
 var hours = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 console.log(hours);
-
-var showtime = $("#currentDay").text(setTime);
+var showtime = $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm a"));
 console.log(showtime);
-
 var newForm = $("<form>");
 console.log(newForm);
 $("#container").append(newForm);
-
-var savedInput = [];
-
 // creating functions
-// time
-function setTime() {
-  var time = moment().format("MMMM Do YYYY, h:mm a");
-  return time;
-}
-console.log(setTime());
 
 // calendar
 function createCalendar() {
+  $(newForm).empty();
   for (var i = 0; i < hours.length; i++) {
+    var storedCalendar = localStorage.getItem(hours[i]);
+    var todoText = "";
+    if (storedCalendar) {
+      todoText = storedCalendar
+    }
     var colorTime;
     if (moment().hour() === hours[i]) {
       colorTime = "present";
@@ -31,65 +26,24 @@ function createCalendar() {
       colorTime = "past";
     }
     var guestInput = $(`<div class="input-group mb-3 ${colorTime}"><div class="input-group-prepend">
-    <span class="input-group-text">${hours[i]}:00</span>
-      </div>
-      <input type="text" class="form-control ${colorTime}" id= "input">
-      <div class="input-group-append">
-        <span class="input-group-text"><button class= saveBtn><i class= 'fas fa-save'></i></span>
-      </div>
-      </div>`);
+<span class="input-group-text">${hours[i]}:00</span>
+</div>
+<input type="text" class="form-control ${colorTime}" data=${hours[i]} value=${todoText}><div class="input-group-append">
+<span class="input-group-text"><button class= "saveBtn"><i class= 'fas fa-save'></i></span>
+</div>
+</div>`);
     $(newForm).append(guestInput);
   }
-
-  function renderCalendar() {
-    $("#input").text("");
-
-    for (var i = 0; i < savedInput.length; i++) {
-      var todo = savedInput[i];
-      // var p = $("<p id='p'></p>");
-
-      $("#input").text(todo);
-      $("#input").attr("data-index", i);
-
-      $("#input").append(".saveBtn");
-    }
-
-    // $("#input").attr("data-index", i);
-    // $("#input").append(".saveBtn");
-  }
-
-  function init() {
-    var storedCalendar = JSON.parse(localStorage.getItem("calendar"));
-    if (storedCalendar !== null) {
-      savedInput = storedCalendar;
-    }
-
-    renderCalendar();
-  }
-
-  function storedCalendar() {
-    localStorage.setItem("calendar", JSON.stringify(savedInput));
-  }
-
-  $(".saveBtn").on("click", function(event) {
+  $(".saveBtn").on("click", function (event) {
     event.preventDefault();
-    console.log("you click me ");
-
-    var calendarText = $("#input").val();
-
-    // if (calendarText === "") {
-    //   return;
-    // }
-    savedInput.push(calendarText);
-
-    // $("#input").val(" ");
-    renderCalendar();
-    storedCalendar();
+    var textInput = $(this).parent().parent().parent().children()[1].value;
+    var key = $(this).parent().parent().parent().children()[1].getAttribute('data');
+    localStorage.setItem(key, textInput);
+    createCalendar();
   });
-  init();
 }
 
-$(document).ready(function() {
-  setTime();
+$(document).ready(function () {
+
   createCalendar();
 });
